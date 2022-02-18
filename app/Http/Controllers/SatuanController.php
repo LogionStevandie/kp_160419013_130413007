@@ -120,11 +120,10 @@ class SatuanController extends Controller
      * @param  \App\Models\Satuan  $satuan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(string $id)
+    public function destroy(Satuan $satuan)
     {
-        DB::table('satuan')
-            ->where('id', $id)
-            ->delete();
+        //DB::table('satuan')->where('id', $id)->delete();
+        $satuan->delete();
         return redirect()->route('satuan.index')->with('status','Success!!');
     }
 }
