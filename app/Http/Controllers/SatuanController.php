@@ -83,6 +83,9 @@ class SatuanController extends Controller
     public function edit(Satuan $satuan)
     {
         //
+         return view('master.satuan_edit',[
+             'satuan'=>$satuan
+         ]);
       
     }
 
@@ -96,21 +99,21 @@ class SatuanController extends Controller
     public function update(Request $request, Satuan $satuan)
     {
         //
-        //$data = $request->collect(); //la teros iki
+        $data = $request->collect(); //la teros iki
         
-        /*DB::table('satuan')
-            ->where('id', $data['id'])
+        DB::table('satuan')
+            ->where('id', $satuan['id'])
             ->update(array(
                 'name' => $data['satuan']
             ));
 
-        return redirect()->route('satuan.index')->with('status','Success!!');*/            
+        return redirect()->route('satuan.index')->with('status','Success!!');            
 
-        $data=$request->validate([
+        /*$data=$request->validate([
             'name'=> 'required'
          ]);
          $satuan->update($data);
-         return redirect()->route('satuan.index')->with('status','Success updated!!');//balek ke halaman awal
+         return redirect()->route('satuan.index')->with('status','Success updated!!');//balek ke halaman awal*/
         
     }
 
@@ -122,8 +125,12 @@ class SatuanController extends Controller
      */
     public function destroy(Satuan $satuan)
     {
+<<<<<<< HEAD
         //DB::table('satuan')->where('id', $id)->delete();
         $satuan->delete();
+=======
+        /*DB::table('satuan')->where('id', $id)*/$satuan->delete();
+>>>>>>> 48cc009a9281ad6aae284debf0507355e82eec24
         return redirect()->route('satuan.index')->with('status','Success!!');
     }
 }
